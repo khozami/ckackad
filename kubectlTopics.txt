@@ -27,3 +27,18 @@ kubectl exec my-pod -c busybox -- echo "Hello, world!"
 
 - Delete a pod.
 kubectl delete pod my-pod
+
+- Get resource types
+kubectl api-resources
+
+
+------------------- kubectl Tips ----------------
+==> an imperative cmd 
+kubectl create deployment my-deployment --image=nginx --dry-run -o yaml > deploy.yml
+
+==> a declarative cmd 
+kubectl create -f deploy.yml
+
+==> keep track of cmd in object Annotations with --record
+kubectl scale deployment my-deployment replicas=5 --record
+kubectl describe deployment my-deployment
