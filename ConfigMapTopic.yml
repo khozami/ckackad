@@ -1,0 +1,9 @@
+# key ==> value to store config data !
+# could be passed to other k8s objects as (env) var or as (mounted volume, probably under etc) 
+apiVersion: v1
+Kind: ConfigMap
+metadata:
+  name: a-conf-map # important to reference the config map
+data:
+  myKey: myValue
+  anotherOne: anotherVal
