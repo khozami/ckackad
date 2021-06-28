@@ -23,7 +23,13 @@ spec:
         # cpu: "250m" # millicpu 1/4 of one core !
       limits:
         memory: "128Mi" 
-        cpu: "500m"        
+        cpu: "500m"
+    env: 
+    - name: MY_PASSWD
+      valueFrom: 
+        secretRef:
+          name: a-secret
+          key: myKey          
     command: 
       - 'sh'
       - '-c'
