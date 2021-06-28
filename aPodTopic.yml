@@ -17,6 +17,13 @@ spec:
     - name: a-volume
       mountPath: /etc/config 
 #eq ==><== 
+    resources:
+      requests: 
+        memory: "64Mi"
+        # cpu: "250m" # millicpu 1/4 of one core !
+      limits:
+        memory: "128Mi" 
+        cpu: "500m"        
     command: 
       - 'sh'
       - '-c'
