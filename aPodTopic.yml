@@ -7,12 +7,22 @@ metadata:
   namespace: some-ns
 spec:
   containers:
-    - name: myapp-containers
-      image: busybox
-      command: ['sh', '-c', 'echo hello && sleep 3600']
+  - name: myapp-containers
+    image: busybox
+    command: ['sh', '-c', 'echo hello && sleep 3600', 'ls /etc/config']
+    volumeMounts: 
+    - name: a-volume
+      mountPath: /etc/config 
 #eq ==><== 
-      command: 
-        - 'sh'
-        - '-c'
-        - 'echo hello && sleep 3600'
-    
+    command: 
+      - 'sh'
+      - '-c'
+      - 'echo hello && sleep 3600'
+  volumes: 
+  - name: a-volume
+    configMap: 
+      name: a-conf-map    
+
+# to see the effect of ls see kubectl logs pod-name
+#or
+#kubectl exec pod-name -- cat /etc/config/myKey ==> shoud log the relevant value
