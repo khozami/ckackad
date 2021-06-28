@@ -6,6 +6,9 @@ metadata:
     app: myapp
   namespace: some-ns
 spec:
+  securityContext:
+    runAsUser: XXXX # ... and not root
+    fsGroup: NNNN    
   containers:
   - name: myapp-containers
     image: busybox
